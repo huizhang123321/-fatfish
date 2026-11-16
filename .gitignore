@@ -1,0 +1,15 @@
+# Local build tools and secrets
+.android-toolchain/
+.build/
+keystore/
+*.jks
+*.keystore
+.testdata/
+local.properties
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
