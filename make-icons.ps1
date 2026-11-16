@@ -3,12 +3,12 @@
     Regenerate Android launcher icons from the desktop application's icon.
 
 .DESCRIPTION
-    The desktop icon (desktop/build/icon.png, 512x512) is the visual source of
-    truth. This script resamples it into every Android density bucket and also
-    derives the adaptive-icon foreground layers. It uses System.Drawing, so no
-    ImageMagick or Python image library is needed.
+    icon-source.png in this repository is the visual source of truth. This
+    script resamples it into every Android density bucket and also derives the
+    adaptive-icon foreground layers. It uses System.Drawing, so no ImageMagick
+    or Python image library is needed.
 
-    Run it after the desktop icon changes:
+    Run it after icon-source.png changes:
 
         powershell -ExecutionPolicy Bypass -File .\make-icons.ps1
 
@@ -24,10 +24,10 @@ param(
 $ErrorActionPreference = "Stop"
 $Here = Split-Path -Parent $MyInvocation.MyCommand.Path
 if (-not $Source) {
-    $Source = Join-Path (Split-Path -Parent $Here) "desktop\build\icon.png"
+    $Source = Join-Path $Here "icon-source.png"
 }
 if (-not (Test-Path $Source)) {
-    Write-Host "[icons] desktop icon not found: $Source" -ForegroundColor Red
+    Write-Host "[icons] icon source not found: $Source" -ForegroundColor Red
     exit 1
 }
 $Source = (Resolve-Path $Source).Path

@@ -12,7 +12,7 @@ FatFish 的 Android 客户端独立仓库：一个原生 Android 外壳，加上
 - **安装包**：[`dist/FatFish-Android-1.2.0.apk`](dist/FatFish-Android-1.2.0.apk)
 - **体积**：约 0.18 MB，无任何 `.so` 原生库
 - **界面**：原生连接页 + WebView 中的手机版 FatFish
-- **图标**：与主仓库电脑软件同款（已生成到 `app/res`）
+- **图标**：与主仓库电脑软件同款（源图 `icon-source.png`，已生成到 `app/res`）
 
 <img src="screenshots/app-icon.png" width="96" height="96" alt="FatFish 安卓图标" />
 
@@ -47,13 +47,9 @@ FatFish 的 Android 客户端独立仓库：一个原生 Android 外壳，加上
 
 ### 启动服务端
 
-```powershell
-# 在 FatFish 主仓库的 安卓端/ 目录中运行
-powershell -ExecutionPolicy Bypass -File .\start-server.ps1
-```
-
-脚本会检查 `.venv`，使用和桌面端相同的 `%APPDATA%\FatFish\data`，监听
-`0.0.0.0`，并打印当前电脑的局域网 IPv4（会过滤 Radmin/VMware 等虚拟网卡）。
+服务端启动脚本在 FatFish 主仓库的 `安卓端/start-server.ps1`。它使用和桌面端相同的
+`%APPDATA%\FatFish\data`，监听 `0.0.0.0`，并打印当前电脑的局域网 IPv4（会过滤
+Radmin/VMware 等虚拟网卡）。
 
 - 默认 HTTPS；加 `-Http` 使用明文 HTTP
 - 自定义端口：`-Port 5001`
@@ -196,7 +192,7 @@ SHA-256  A41A771F27933CE69EF75EFA9FA27C67BDEFE502504E2238D18F11D7C474E4A8
 
 ### 图标
 
-启动图标、自适应图标和品牌图来自主仓库的 `desktop/build/icon.png`，生成结果已包含在 `app/res`。主仓库图标变化后，在本仓库运行：
+启动图标、自适应图标和品牌图来自本仓库的 `icon-source.png`，生成结果已包含在 `app/res`。图标变化后运行：
 
 ```powershell
 .\make-icons.ps1
@@ -207,6 +203,7 @@ SHA-256  A41A771F27933CE69EF75EFA9FA27C67BDEFE502504E2238D18F11D7C474E4A8
 ```
 .
 ├─ app/
+├─ icon-source.png              桌面同款图标源图（512×512）
 │  ├─ AndroidManifest.xml
 │  ├─ assets/NOTICE.txt
 │  ├─ java/com/fatfish/android/
